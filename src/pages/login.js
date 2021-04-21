@@ -49,6 +49,14 @@ export default function Login() {
               className="text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2"
               onChange={({ target }) => setPassword(target.value)}
             />
+            <button
+              disabled={isInvalid}
+              type="submit"
+              className={`bg-blue-500 text-white w-full rounded h-8 font-bold
+          ${isInvalid && "opacity-50"}`}
+            >
+              Log In
+            </button>
           </form>
         </div>
       </div>
