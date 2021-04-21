@@ -32,6 +32,7 @@ export default function Login() {
               className="mt-2 w-6/12 mb-4"
             />
           </h1>
+          {error && <p className="mb-4 text-xs text-red-primary">{error}</p>}
         </div>
       </div>
     </div>
