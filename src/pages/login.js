@@ -59,6 +59,14 @@ export default function Login() {
             </button>
           </form>
         </div>
+        <div className="flex justify-center items-center flex-col w-full bg-white p-4 border border-gray-primary">
+          <p className="text-sm">
+            Don't have an account?{` `}
+            <Link to="/signup" className="font-bold text-blue-medium">
+              Sign up
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );
