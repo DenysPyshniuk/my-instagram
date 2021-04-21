@@ -6,7 +6,7 @@ const Login = lazy(() => import("./pages/login"));
 const SignUp = lazy(() => import("./pages/sign-up"));
 const NotFound = lazy(() => import("./pages/not-found"));
 
-function App() {
+export default function App() {
   return (
     <Router>
       <Suspense fallback={<p>Loading...</p>}>
@@ -19,5 +19,3 @@ function App() {
     </Router>
   );
 }
-
-export default App;
