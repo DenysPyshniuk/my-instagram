@@ -6,7 +6,7 @@ export default function User({ username, fullName }) {
   return <p>I'm a user</p>;
 }
 
-User.PropTypes = {
+User.propTypes = {
   username: PropTypes.string,
   fullName: PropTypes.string,
 };
