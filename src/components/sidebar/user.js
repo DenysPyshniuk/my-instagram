@@ -18,13 +18,16 @@ const User = ({ username, fullName }) =>
           alt=""
         />
       </div>
-      <p>{username}</p>
+      <div className="col-span-3">
+        <p className="font-bold text-sm">{username}</p>
+        <p className="text-sm">{fullName}</p>
+      </div>
     </Link>
   );
 
 export default User;
 
 User.propTypes = {
-  username: PropTypes.string,
+  username: PropTypes.string.isRequired,
   fullName: PropTypes.string.isRequired,
 };
