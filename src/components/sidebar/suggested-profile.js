@@ -3,10 +3,11 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 export default function SuggestedProfile({
-  userDocId,
+  spDocId,
   username,
   profileId,
   userId,
+  loggedInUserDocId,
 }) {
   const [followed, setFollowed] = useState(false);
 
@@ -38,8 +39,9 @@ export default function SuggestedProfile({
 }
 
 SuggestedProfile.propTypes = {
-  userDocId: PropTypes.string.isRequired,
+  spDocId: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
   profiled: PropTypes.string.isRequired,
   userId: PropTypes.string.isRequired,
+  loggedInUserDocId: PropTypes.string.isRequired,
 };
