@@ -53,3 +53,19 @@ export async function updateLoggedInUserFollowing(
         : FieldValue.arrayUnion(profileId),
     });
 }
+
+export async function updateFollowedUserFollowers(
+  profileDocId, //currently logged in user document id (denys)
+  loggedInUserDocId, // the user that denys requested to follow
+  isFollowingProfile //true/false (am I currently following this person?)
+) {
+  return firebase
+    .firestore()
+    .collection("users")
+    .doc(profileDocId)
+    .update({
+      followers: isFollowingProfile
+        ? FieldValue.arrayRemove(loggedInUserDocId)
+        : FieldValue.arrayUnion(loggedInUserDocId),
+    });
+}
