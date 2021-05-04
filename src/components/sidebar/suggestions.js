@@ -35,7 +35,7 @@ export default function Suggestions({ userId, following, loggedInUserDocId }) {
         {profiles.map((profile) => (
           <SuggestedProfile
             key={profile.docId}
-            spDocId={profile.docId}
+            profileDocId={profile.docId}
             username={profile.username}
             profileId={profile.userId}
             userId={userId}
