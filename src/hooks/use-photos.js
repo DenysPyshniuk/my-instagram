@@ -17,10 +17,14 @@ export default function usePhotos() {
       if (following.length > 0) {
         followedUserPhotos = await getPhotos(userId, following);
       }
+
+      //re-arrange array to be newest photos first by dateCreated
+      followedUserPhotos.sort((a, b) => b.dataCreated - a.dataCreated);
+      setPhotos(followedUserPhotos);
     }
 
     getTimelinePhotos();
-  }, []);
+  }, [userId]);
 
   return { photos };
 }
