@@ -1,9 +1,14 @@
 import { useRef } from "react";
 import PropTypes from "prop-types";
-
+import Header from "./header";
 export default function Post(content) {
   // header, image, actions(like & comment icons), foter, comments
-  return <p>I am a post</p>;
+
+  return (
+    <div className="rounded col-span-4 border bg-white border-gray-primary mb-16">
+      <Header username={content.username} />
+    </div>
+  );
 }
 
 Post.propTypes = {
