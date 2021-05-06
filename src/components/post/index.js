@@ -7,7 +7,7 @@ export default function Post({ content }) {
   // header, image, actions(like & comment icons), foter, comments
 
   return (
-    <div className="rounded col-span-4 border bg-white border-gray-primary mb-8 ">
+    <div className="rounded col-span-4 border bg-white border-gray-primary mb-12 ">
       <Header username={content.username} />
       <Image src={content.imageSrc} caption={content.caption} />
     </div>
