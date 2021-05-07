@@ -20,6 +20,7 @@ export default function AddComment({
 
     // Give a new array [], put the new comment in the array, add the old comments too
     setComments([{ displayName, comment }, ...comments]);
+    setComment("");
 
     return null;
   };
