@@ -23,7 +23,13 @@ export default function AddComment({
     // Clear an input comment field
     setComment("");
 
-    return null;
+    return firebase
+      .firestore()
+      .collection("photos")
+      .doc(docId)
+      .update({
+        comments: FieldValue.arrayUnion({ displayName, comment }),
+      });
   };
 
   return (
