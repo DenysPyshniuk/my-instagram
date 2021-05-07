@@ -18,6 +18,9 @@ export default function AddComment({
   const handleSubmitComment = (event) => {
     event.preventDefault();
 
+    // Give a new array [], put the new comment in the array, add the old comments too
+    setComments([{ displayName, comment }, ...comments]);
+
     return null;
   };
 
