@@ -93,6 +93,6 @@ export default function Actions({
 Actions.propTypes = {
   docId: PropTypes.string.isRequired,
   totalLikes: PropTypes.number.isRequired,
-  likesPhotos: PropTypes.bool.isRequired,
+  likedPhoto: PropTypes.bool.isRequired,
   handleFocus: PropTypes.func.isRequired,
 };
