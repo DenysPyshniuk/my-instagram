@@ -1,0 +1,20 @@
+import PropTypes from "prop-types";
+import { Route, Redirect } from "react-route-dom";
+import * as Routes from "../constants/routes";
+
+export default function ProtectedRoute({ user, children, ...rest }) {
+  return (
+    <Route
+      {...rest}
+      render={({ location }) => {
+        if (user) {
+          return children;
+        }
+
+        if (!user) {
+          return <Redirect to={{ pathname: ROUTES.LOGIN }} />;
+        }
+      }}
+    />
+  );
+}
