@@ -12,9 +12,23 @@ export default function ProtectedRoute({ user, children, ...rest }) {
         }
 
         if (!user) {
-          return <Redirect to={{ pathname: ROUTES.LOGIN }} />;
+          return (
+            <Redirect
+              to={{
+                pathname: ROUTES.LOGIN,
+                state: { from: location },
+              }}
+            />
+          );
         }
+
+        return null;
       }}
     />
   );
 }
+
+ProtectedRoute.propTypes = {
+  user: PropTypes.object,
+  children: PropTypes.object.isRequired,
+};
