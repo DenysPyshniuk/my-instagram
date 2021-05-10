@@ -10,7 +10,6 @@ export default function usePhotos() {
 
   useEffect(() => {
     async function getTimelinePhotos() {
-      // example: [2, 1, 5] <- 2 being raphael
       const [{ following }] = await getUserByUserId(userId);
       let followedUserPhotos = [];
       // does the user actually follow people?
