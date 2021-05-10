@@ -25,7 +25,13 @@ export default function App() {
             >
               <Login />
             </IsUserLoggedIn>
-            <Route path={ROUTES.SIGN_UP} component={SignUp} />
+            <IsUserLoggedIn
+              user={user}
+              loggedInPath={ROUTES.DASHBOARD}
+              path={ROUTES.SIGN_UP}
+            >
+              <SignUp />
+            </IsUserLoggedIn>
             <ProtectedRoute user={user} path={ROUTES.DASHBOARD} exact>
               <Dashboard />
             </ProtectedRoute>
