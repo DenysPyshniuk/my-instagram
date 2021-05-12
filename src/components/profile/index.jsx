@@ -1,6 +1,7 @@
 import { useReducer, useEffect } from "react";
 import PropTypes from "prop-types";
 import Header from "./header";
+import Photos from "./photos";
 import {
   getUserByUsername,
   getUserPhotosByUsername,
@@ -22,17 +23,15 @@ export default function Profile({ user }) {
   useEffect(() => {
     async function getProfileInfoAndPhotos() {
       const photos = getUserPhotosByUsername(user.username);
-      console.log("user", user);
-      console.log("photos", photos);
-      // dispatch({
-      //   profile: user,
-      //   photosCollection: photos,
-      //   followerCount: user.followers.length,
-      // });
+      //Set values
+      dispatch({
+        profile: user,
+        photosCollection: photos,
+        followerCount: user.followers.length,
+      });
     }
-    if (user.username) {
-      getProfileInfoAndPhotos();
-    }
+
+    getProfileInfoAndPhotos();
   }, [user.username]);
 
   return (
