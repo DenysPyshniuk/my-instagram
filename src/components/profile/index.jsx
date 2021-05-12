@@ -6,14 +6,14 @@ import {
   getUserPhotosByUsername,
 } from "../../services/firebase";
 
-const reducer = (state, newState) => ({ ...state, ...newState });
-const initialState = {
-  profile: {},
-  photosCollection: [],
-  followerCount: 0,
-};
+export default function Profile({ user }) {
+  const reducer = (state, newState) => ({ ...state, ...newState });
+  const initialState = {
+    profile: {},
+    photosCollection: [],
+    followerCount: 0,
+  };
 
-export default function Profile({ username }) {
   const [{ profile, photosCollection, followerCount }, dispatch] = useReducer(
     reducer,
     initialState
@@ -21,14 +21,24 @@ export default function Profile({ username }) {
 
   useEffect(() => {
     async function getProfileInfoAndPhotos() {
-      const [{ ...user }] = await getUserByUsername(username);
-      const photos = getUserPhotosByUsername(username);
-      dispatch({
-        profile: user,
-        photosCollection: photos,
-        followerCount: user.followers.length,
-      });
+      const photos = getUserPhotosByUsername(user.username);
+      console.log("user", user);
+      console.log("photos", photos);
+      // dispatch({
+      //   profile: user,
+      //   photosCollection: photos,
+      //   followerCount: user.followers.length,
+      // });
     }
-    getProfileInfoAndPhotos();
-  }, []);
+    if (user.username) {
+      getProfileInfoAndPhotos();
+    }
+  }, [user.username]);
+
+  return (
+    <>
+      <Header />
+      <p>Hello {user.username}</p>
+    </>
+  );
 }
