@@ -8,26 +8,23 @@ import UserProfile from "../components/profile/";
 export default function Profile() {
   const { username } = useParams();
   const [user, setUser] = useState(null);
-  const [userExists, setUserExists] = useState(false);
   const history = useHistory();
 
+  //Check if user exist and set it, if not exist then push to the Not_Found page
   useEffect(() => {
     async function checkUserExists() {
       const user = await getUserByUsername(username);
       if (user.length > 0) {
         setUser(user[0]);
-        setUserExists(true);
       } else {
         history.push(ROUTES.NOT_FOUND);
       }
     }
 
     checkUserExists();
-
-    console.log("user", user);
   }, [username, history]);
 
-  return userExists ? (
+  return user?.username ? (
     <div className="bg-gray-background">
       <Header />
       <div className="mx-auto max-w-screen-lg">
