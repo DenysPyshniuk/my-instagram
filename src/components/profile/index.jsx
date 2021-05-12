@@ -42,3 +42,14 @@ export default function Profile({ user }) {
     </>
   );
 }
+
+Profile.propTypes = {
+  user: PropTypes.shape({
+    dateCreated: PropTypes.number.isRequired,
+    emailAddress: PropTypes.string.isRequired,
+    followers: PropTypes.array.isRequired,
+    fullName: PropTypes.string.isRequired,
+    userId: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired,
+  }).isRequired,
+};
