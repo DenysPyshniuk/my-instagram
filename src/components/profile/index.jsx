@@ -38,6 +38,7 @@ export default function Profile({ user }) {
   return (
     <>
       <Header />
+      <Photos photos={photosCollection} />
       <p>Hello {user.username}</p>
     </>
   );
