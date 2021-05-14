@@ -13,12 +13,13 @@ export default function Header({
     userId: profileUserId,
     fullName,
     following = [],
+    username: profileUsername,
   },
 }) {
   // Information about user who's viewing the page
   const { user } = useUser();
-
   const [isFollowingProfile, setIsFollowingProfile] = useState(false);
+  const activeBtnFollow = user.username && user.username !== profileUsername;
 
   useEffect(() => {
     const isLoggedInUserFollowingProfile = async () => {
@@ -41,13 +42,13 @@ export default function Header({
           <img
             className="rounded-full h-40 w-40 flex"
             alt={`${user.username} profile picture`}
-            src={`/images/avatars/${user.username}.jpg`}
+            src={`/images/avatars/${profileUsername}.jpg`}
           />
         )}
       </div>
       <div className="flex items-center justify-center flex-col col-span-2">
         <div className="container flex items-center">
-          <p className="text-2xl mr-4">{user.username}</p>
+          <p className="text-2xl mr-4">{profileUsername}</p>
         </div>
       </div>
     </div>
@@ -62,6 +63,7 @@ Header.propTypes = {
     docId: PropTypes.string,
     userId: PropTypes.string,
     fullName: PropTypes.string,
+    username: PropTypes.string,
     following: PropTypes.array,
   }).isRequired,
 };
