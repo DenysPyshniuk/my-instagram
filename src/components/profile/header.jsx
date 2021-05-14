@@ -86,6 +86,10 @@ export default function Header({
                 {`  `}
                 {followers === 1 ? `follower` : `followers`}
               </p>
+              <p className="mr-10">
+                <span className="font-bold">{following.length}</span>
+                {`  `}following
+              </p>
             </>
           )}
         </div>
