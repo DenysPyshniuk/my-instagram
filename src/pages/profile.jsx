@@ -13,9 +13,9 @@ export default function Profile() {
   //Check if user exist and set it, if not exist then push to the Not_Found page
   useEffect(() => {
     async function checkUserExists() {
-      const user = await getUserByUsername(username);
-      if (user.length > 0) {
-        setUser(user[0]);
+      const [user] = await getUserByUsername(username);
+      if (user.userId) {
+        setUser(user);
       } else {
         history.push(ROUTES.NOT_FOUND);
       }
