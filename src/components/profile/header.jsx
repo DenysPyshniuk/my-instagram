@@ -45,6 +45,11 @@ export default function Header({
           />
         )}
       </div>
+      <div className="flex items-center justify-center flex-col col-span-2">
+        <div className="container flex items-center">
+          <p className="text-2xl mr-4">{user.username}</p>
+        </div>
+      </div>
     </div>
   );
 }
