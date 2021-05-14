@@ -142,5 +142,5 @@ export async function isUserFollowingProfile(
     docId: item.id,
   }));
 
-  console.log("response", response);
+  return response.userId;
 }
