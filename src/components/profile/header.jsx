@@ -12,6 +12,7 @@ export default function Header({
     docId: profileDocId,
     userId: profileUserId,
     fullName,
+    followers = [],
     following = [],
     username: profileUsername,
   },
@@ -20,7 +21,14 @@ export default function Header({
   const { user } = useUser();
   const [isFollowingProfile, setIsFollowingProfile] = useState(false);
   const activeBtnFollow = user.username && user.username !== profileUsername;
-  const handleToggleFollow = () => 1;
+  const handleToggleFollow = () => {
+    setIsFollowingProfile((isFollowingProfile) => !isFollowingProfile);
+    setFollowerCount({
+      followerCount: isFollowingProfile
+        ? followers.length - 1
+        : followers.length + 1,
+    });
+  };
 
   useEffect(() => {
     const isLoggedInUserFollowingProfile = async () => {
@@ -28,7 +36,7 @@ export default function Header({
         user.username,
         profileUserId
       );
-      setIsFollowingProfile(isFollowing);
+      setIsFollowingProfile(!!isFollowing);
     };
 
     if (user.username && profileUserId) {
@@ -55,9 +63,25 @@ export default function Header({
               className="bg-blue-medium font-bold text-sm rounded text-white w-20 h-8"
               type="button"
               onClick={handleToggleFollow}
+              onKeyDown={(event) => {
+                if (event.key === "Enter") {
+                  handleToggleFollow();
+                }
+              }}
             >
               {isFollowingProfile ? "Unfollow" : "Follow"}
             </button>
+          )}
+        </div>
+        <div className="container flex mt-4">
+          {followers === undefined || following === undefined ? (
+            <Skeleton count={1} width={677} height={24} />
+          ) : (
+            <>
+              <p className="mr-10">
+                <span className="font-bold">{photosCount}</span> photos
+              </p>
+            </>
           )}
         </div>
       </div>
@@ -66,14 +90,15 @@ export default function Header({
 }
 
 Header.propTypes = {
-  photosCount: PropTypes.number,
-  followerCount: PropTypes.number,
-  setFollowerCount: PropTypes.func,
+  photosCount: PropTypes.number.isRequired,
+  followerCount: PropTypes.number.isRequired,
+  setFollowerCount: PropTypes.func.isRequired,
   profile: PropTypes.shape({
     docId: PropTypes.string,
     userId: PropTypes.string,
     fullName: PropTypes.string,
     username: PropTypes.string,
     following: PropTypes.array,
-  }),
+    followers: PropTypes.array,
+  }).isRequired,
 };
