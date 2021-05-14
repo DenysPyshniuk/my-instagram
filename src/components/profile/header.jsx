@@ -81,6 +81,11 @@ export default function Header({
               <p className="mr-10">
                 <span className="font-bold">{photosCount}</span> photos
               </p>
+              <p className="mr-10">
+                <span className="font-bold">{followers.length}</span>
+                {`  `}
+                {followers === 1 ? `follower` : `followers`}
+              </p>
             </>
           )}
         </div>
