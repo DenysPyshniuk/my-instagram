@@ -22,7 +22,7 @@ export default function Profile({ user }) {
 
   useEffect(() => {
     async function getProfileInfoAndPhotos() {
-      const photos = getUserPhotosByUsername(user.username);
+      const photos = await getUserPhotosByUsername(user.username);
       //Set values
       dispatch({
         profile: user,
@@ -43,7 +43,6 @@ export default function Profile({ user }) {
         setFollowerCount={dispatch}
       />
       <Photos photos={photosCollection} />
-      <p>Hello {user.username}</p>
     </>
   );
 }
