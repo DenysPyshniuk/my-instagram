@@ -93,6 +93,11 @@ export default function Header({
             </>
           )}
         </div>
+        <div className="container mt-4">
+          <p className="font-medium">
+            {!fullName ? <Skeleton width={677} height={24} /> : fullName}
+          </p>
+        </div>
       </div>
     </div>
   );
