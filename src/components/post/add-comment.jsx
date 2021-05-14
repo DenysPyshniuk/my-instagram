@@ -19,7 +19,7 @@ export default function AddComment({
     event.preventDefault();
 
     // Give a new array [], put the new comment in the array, add the old comments too
-    setComments([{ displayName, comment }, ...comments]);
+    setComments([...comments, { displayName, comment }]);
     // Clear an input comment field
     setComment("");
 
