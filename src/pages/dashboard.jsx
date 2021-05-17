@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Header from "../components/header";
 import Sidebar from "../components/sidebar";
 import Timeline from "../components/timeline";
-import useUser from "..hooks/use-user";
+import useUser from "../hooks/use-user";
 import LoggedInUserContext from "../context/logged-in-user";
 
 export default function Dashboard({ user: loggedInUser }) {
