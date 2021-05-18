@@ -57,13 +57,13 @@ export default function Header({
         {profileUsername ? (
           <img
             className="rounded-full h-40 w-40 flex"
-            alt={`${user.username} profile picture`}
+            alt={`${user.username} profile pic`}
             src={`/images/avatars/${profileUsername}.jpg`}
           />
         ) : (
           <img
             className="rounded-full h-40 w-40 flex"
-            alt={`${user.username} profile picture`}
+            alt={`${user.username} profile pic`}
             src={`/images/avatars/${profileUsername}.jpg`}
           />
         )}
