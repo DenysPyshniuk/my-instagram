@@ -2,10 +2,7 @@ import { useReducer, useEffect } from "react";
 import PropTypes from "prop-types";
 import Header from "./header";
 import Photos from "./photos";
-import {
-  getUserByUsername,
-  getUserPhotosByUsername,
-} from "../../services/firebase";
+import { getUserPhotosByUsername } from "../../services/firebase";
 
 export default function Profile({ user }) {
   const reducer = (state, newState) => ({ ...state, ...newState });
@@ -23,7 +20,6 @@ export default function Profile({ user }) {
   useEffect(() => {
     async function getProfileInfoAndPhotos() {
       const photos = await getUserPhotosByUsername(user.username);
-      //Set values
       dispatch({
         profile: user,
         photosCollection: photos,
@@ -32,7 +28,7 @@ export default function Profile({ user }) {
     }
 
     getProfileInfoAndPhotos();
-  }, [user.username]);
+  }, [user, user.username]);
 
   return (
     <>
@@ -49,11 +45,12 @@ export default function Profile({ user }) {
 
 Profile.propTypes = {
   user: PropTypes.shape({
-    dateCreated: PropTypes.number.isRequired,
-    emailAddress: PropTypes.string.isRequired,
-    followers: PropTypes.array.isRequired,
-    fullName: PropTypes.string.isRequired,
-    userId: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-  }).isRequired,
+    dateCreated: PropTypes.number,
+    emailAddress: PropTypes.string,
+    followers: PropTypes.array,
+    following: PropTypes.array,
+    fullName: PropTypes.string,
+    userId: PropTypes.string,
+    username: PropTypes.string,
+  }),
 };
