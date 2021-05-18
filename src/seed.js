@@ -37,6 +37,15 @@ export function seedDatabase(firebase) {
       followers: ["9DmC3x7WtMcZ788RcC8iN7EHU9G3"],
       dateCreated: Date.now(),
     },
+    {
+      userId: "Rn6zfClDYpXhQdJsWlWwpGHvDdv1",
+      username: "den",
+      fullName: "Denys Pyshniuk",
+      emailAddress: "devronder@gmail.com",
+      following: [],
+      followers: ["9DmC3x7WtMcZ788RcC8iN7EHU9G3", "2", "1"],
+      dateCreated: Date.now(),
+    },
   ];
 
   for (let k = 0; k < users.length; k++) {
@@ -49,22 +58,26 @@ export function seedDatabase(firebase) {
       .collection("photos")
       .add({
         photoId: i,
-        userId: "2",
-        imageSrc: `/images/users/raphael/${i}.jpg`,
-        caption: "Saint George and the Dragon",
+        userId: "Rn6zfClDYpXhQdJsWlWwpGHvDdv1",
+        imageSrc: `/images/users/den/${i}.jpg`,
+        caption: "British Columbia, Canada",
         likes: [],
         comments: [
           {
-            displayName: "dali",
+            displayName: "steve",
             comment: "Love this place, looks like my animal farm!",
           },
           {
             displayName: "orwell",
             comment: "Would you mind if I used this picture?",
           },
+          {
+            displayName: "den",
+            comment: "Absolutley!",
+          },
         ],
-        userLatitude: "40.7128°",
-        userLongitude: "74.0060°",
+        userLatitude: "49.313205°",
+        userLongitude: "-123.076950°",
         dateCreated: Date.now(),
       });
   }
