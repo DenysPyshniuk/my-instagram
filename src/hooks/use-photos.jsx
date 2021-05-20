@@ -10,7 +10,7 @@ export default function usePhotos(user) {
       if (user?.following?.length > 0) {
         const followedUserPhotos = await getPhotos(user.userId, user.following);
         //re-arrange array to be newest photos first by dateCreated
-        followedUserPhotos.sort((a, b) => b.dataCreated - a.dataCreated);
+        followedUserPhotos.sort((a, b) => a.dataCreated > b.dataCreated);
         setPhotos(followedUserPhotos);
       }
     }
